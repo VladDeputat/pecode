@@ -1,0 +1,34 @@
+.episodeCard {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #999999;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+
+  .posterWrapper {
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 100px;
+    height: 100px;
+
+    img {
+      object-fit: contain;
+      display: block;
+      // height: 100%;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .name {
+      font-size: 24px;
+    }
+  }
+}

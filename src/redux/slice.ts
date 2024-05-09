@@ -1,15 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
+import { Episode, MoviesState } from "../../types";
 
-// Define a type for the slice state
-interface MoviesState {
-  episodes: [];
-  characters: [];
-  locations: [];
-}
-
-// Define the initial state using that type
 const initialState: MoviesState = {
   episodes: [],
   characters: [],
