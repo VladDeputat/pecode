@@ -6,9 +6,9 @@ import { episodesSelector } from "@/redux/selectors";
 import React, { useEffect, useState } from "react";
 import s from "./styles.module.scss";
 import { Episode } from "../../../types";
-import Image from "next/image";
 import Modal from "@/components/Modal";
 import EpisodeCard from "@/components/pageComponents/episodes/EpisodesCard";
+import Pagination from "@/components/Pagination";
 
 const EpisodesPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -44,36 +44,6 @@ const EpisodesPage: React.FC = () => {
     }
   };
 
-  // const data = {
-  //   air_date: "December 2, 2013",
-  //   characters: [
-  //     "https://rickandmortyapi.com/api/character/1",
-  //     "https://rickandmortyapi.com/api/character/2",
-  //     "https://rickandmortyapi.com/api/character/35",
-  //     "https://rickandmortyapi.com/api/character/38",
-  //     "https://rickandmortyapi.com/api/character/62",
-  //     "https://rickandmortyapi.com/api/character/92",
-  //     "https://rickandmortyapi.com/api/character/127",
-  //     "https://rickandmortyapi.com/api/character/144",
-  //     "https://rickandmortyapi.com/api/character/158",
-  //     "https://rickandmortyapi.com/api/character/175",
-  //     "https://rickandmortyapi.com/api/character/179",
-  //     "https://rickandmortyapi.com/api/character/181",
-  //     "https://rickandmortyapi.com/api/character/239",
-  //     "https://rickandmortyapi.com/api/character/249",
-  //     "https://rickandmortyapi.com/api/character/271",
-  //     "https://rickandmortyapi.com/api/character/338",
-  //     "https://rickandmortyapi.com/api/character/394",
-  //     "https://rickandmortyapi.com/api/character/395",
-  //     "https://rickandmortyapi.com/api/character/435",
-  //   ],
-  //   created: "2017-11-10T12:56:33.798Z",
-  //   episode: "S01E01",
-  //   id: 1,
-  //   name: "Pilot",
-  //   url: "https://rickandmortyapi.com/api/episode/1",
-  // };
-
   return (
     <>
       <main>
@@ -88,27 +58,13 @@ const EpisodesPage: React.FC = () => {
                 />
               ))}
             </ul>
-            <div className={s.pagination}>
-              <button
-                onClick={() => setCurrentPage(1)}
-                disabled={currentPage === 1}
-              >
-                1
-              </button>
-              <button onClick={prevPage} disabled={currentPage === 1}>
-                &lt;
-              </button>
-              <button disabled>{currentPage}</button>
-              <button onClick={nextPage} disabled={currentPage === totalPages}>
-                &gt;
-              </button>
-              <button
-                onClick={() => setCurrentPage(totalPages)}
-                disabled={currentPage === totalPages}
-              >
-                {totalPages}
-              </button>
-            </div>
+            <Pagination
+              setPrevPage={prevPage}
+              setNextPage={nextPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+              currentPage={currentPage}
+            />
           </div>
         )}
       </main>

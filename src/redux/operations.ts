@@ -11,15 +11,19 @@ export const getEpisodes = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const getCharacters = () => async (dispatch: AppDispatch) => {
-  try {
-    const res = await axios.get("");
+export const getCharacters =
+  (page: number, name?: string, status?: string, gender?: string) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      const res = await axios.get(
+        `https://rickandmortyapi.com/api/character/?page=${page}&name=${name}&status=${status}&gender=${gender}`
+      );
 
-    dispatch(getCharacterssAction(res.data));
-  } catch (error) {
-    console.log(error);
-  }
-};
+      dispatch(getCharacterssAction(res.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 // export const getLocations = () => async (dispatch: AppDispatch) => {
 //   try {

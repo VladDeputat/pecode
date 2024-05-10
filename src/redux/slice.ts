@@ -5,7 +5,14 @@ import { Episode, MoviesState } from "../../types";
 
 const initialState: MoviesState = {
   episodes: [],
-  characters: [],
+  characters: {
+    info: {
+      pages: 0,
+      next: null,
+      prev: null,
+    },
+    data: [],
+  },
   locations: [],
 };
 
@@ -17,7 +24,8 @@ export const moviesSlice = createSlice({
       state.episodes = payload;
     },
     getCharacterssAction: (state, { payload }) => {
-      state.characters = payload;
+      state.characters.info = payload.info;
+      state.characters.data = payload.results;
     },
     getLocationsAction: (state, { payload }) => {
       state.locations = payload;
