@@ -31,9 +31,13 @@ const CastList: React.FC<{ characters: string[] }> = ({ characters }) => {
   return (
     <div className={s.listWrapper}>
       <ul className={s.list}>
-        {loadedCharacters.map((character: Character) => (
-          <CastCard character={character} />
-        ))}
+        {characters.length > 0 ? (
+          loadedCharacters.map((character: Character) => (
+            <CastCard character={character} />
+          ))
+        ) : (
+          <p>No characters here</p>
+        )}
       </ul>
       {loadedCharacters.length < characters.length && (
         <button onClick={loadMoreCharacters} className={s.loadBtn}>

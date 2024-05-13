@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "./store";
-import { Episode, MoviesState } from "../../types";
+import { MoviesState } from "../../types";
 
 const initialState: MoviesState = {
-  episodes: [],
+  episodes: {
+    info: {
+      pages: 0,
+      next: null,
+      prev: null,
+    },
+    data: [],
+  },
   characters: {
     info: {
       pages: 0,
@@ -13,7 +18,14 @@ const initialState: MoviesState = {
     },
     data: [],
   },
-  locations: [],
+  locations: {
+    info: {
+      pages: 0,
+      next: null,
+      prev: null,
+    },
+    data: [],
+  },
 };
 
 export const moviesSlice = createSlice({
@@ -21,14 +33,16 @@ export const moviesSlice = createSlice({
   initialState,
   reducers: {
     getEpisodesAction: (state, { payload }) => {
-      state.episodes = payload;
+      state.episodes.info = payload.info;
+      state.episodes.data = payload.results;
     },
     getCharacterssAction: (state, { payload }) => {
       state.characters.info = payload.info;
       state.characters.data = payload.results;
     },
     getLocationsAction: (state, { payload }) => {
-      state.locations = payload;
+      state.locations.info = payload.info;
+      state.locations.data = payload.results;
     },
   },
 });

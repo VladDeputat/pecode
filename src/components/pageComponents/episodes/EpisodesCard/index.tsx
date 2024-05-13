@@ -11,7 +11,6 @@ interface EpisodeCardProps {
 const EpisodeCard: React.FC<EpisodeCardProps> = ({ episode, onModalOpen }) => {
   return (
     <li
-      key={episode.id}
       className={s.episodeCard}
       onClick={() => onModalOpen && onModalOpen(episode)}
     >

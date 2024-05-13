@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getCharacters } from "@/redux/operations";
-import { charactersSelector, infoSelector } from "@/redux/selectors";
+import { charactersSelector, characterInfoSelector } from "@/redux/selectors";
 import React, { useEffect, useState } from "react";
 import { Character } from "../../../types";
 import CastCard from "@/components/pageComponents/episodes/CastCard";
@@ -13,8 +13,7 @@ import Pagination from "@/components/Pagination";
 const CharactersPage = () => {
   const dispatch = useAppDispatch();
   const charactersData = useAppSelector(charactersSelector);
-  const infoData = useAppSelector(infoSelector);
-  const { pages } = infoData;
+  const { pages } = useAppSelector(characterInfoSelector);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({
@@ -31,6 +30,10 @@ const CharactersPage = () => {
 
   useEffect(() => {
     dispatch(getCharacters(currentPage, name, status, gender));
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [currentPage]);
 
   const handleChange = (

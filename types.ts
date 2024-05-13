@@ -8,6 +8,14 @@ export type Episode = {
   url: string;
 };
 
+export type Location = {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents: string[];
+};
+
 export type InfoData = {
   pages: number;
   next: string | null;
@@ -15,9 +23,9 @@ export type InfoData = {
 };
 
 export type MoviesState = {
-  episodes: Episode[];
+  episodes: { info: InfoData; data: Episode[] };
   characters: { info: InfoData; data: Character[] };
-  locations: [];
+  locations: { info: InfoData; data: Location[] };
 };
 
 export type Character = {
